@@ -35,12 +35,6 @@ class transmission_remote_controller():
         procout = self.sudo_run_process(["service", "transmission-daemon", "stop"], True, self.password)
 
     def parse_list_output(self, lines):
-        '''
-        ID     Done       Have  ETA           Up    Down  Ratio  Status       Name
-           1   100%   428.9 MB  Done         0.0     0.0    0.0  Idle         [HorribleSubs] Kuma Miko - 02 [720p].mkv
-        Sum:          428.9 MB               0.0     0.0
-        '''
-        # split gives:  ['1', '100%', '428.9', 'MB', 'Done', '0.0', '0.0', '0.0', 'Idle', 'filename']
         split_lines = [line.split() for line in lines]
         return [
             {
